@@ -433,7 +433,7 @@
         }
 
         function switchTab(tab) {
-            const content = tab === 'desc' ? (selectedProduct.desc || `Nikmati layanan premium ${selectedProduct.name} dengan akses penuh, kualitas terbaik, dan tanpa gangguan. Legal & Bergaransi resmi PandaPedia.`) : "1. Pilih paket durasi yang Anda inginkan.\n2. Masukkan data target (Email/ID).\n3. Lakukan pembayaran via QRIS.\n4. Konfirmasi bukti bayar melalui WhatsApp admin.";
+            const content = tab === 'desc' ? (selectedProduct.desc || `Nikmati layanan premium ${selectedProduct.name} dengan akses penuh, kualitas terbaik, dan tanpa gangguan. Legal & Bergaransi resmi PandaPedia.`) : "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable). \n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4. Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\ 5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID.";
             document.getElementById('tab-content').innerText = content;
             document.getElementById('tab-desc-btn').classList.toggle('active', tab === 'desc');
             document.getElementById('tab-tnc-btn').classList.toggle('active', tab === 'tnc');
