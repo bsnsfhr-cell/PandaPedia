@@ -384,8 +384,8 @@
             const list = document.getElementById('variants-list');
             const v = selectedProduct.variants || [
                 { title: "1 Bulan - Fast Proses", price: selectedProduct.price, badge: "BEST SELLER" },
-                { title: "2 Bulan - Durasi Lebih Lama", price: Math.floor(selectedProduct.price ), badge: "" },
-                { title: "3 Bulan - Paket Premium", price: Math.floor(selectedProduct.price ), badge: " }
+                { title: "2 Bulan - Durasi Lebih Lama", price: Math.floor(selectedProduct.price* ), badge: "" },
+                { title: "3 Bulan - Paket Premium", price: Math.floor(selectedProduct.price* ), badge: " }
             ];
             
             selectedProduct.activeVariants = v;
