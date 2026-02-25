@@ -424,7 +424,7 @@
 
         function switchTab(tab) {
             // MENAMPILKAN DESKRIPSI KUSTOM DARI PRODUK YANG DIPILIH
-            const content = tab === 'desc' ? (selectedProduct.desc || "Nikmati layanan premium dengan proses pengerjaan cepat dan bergaransi resmi dari PandaPedia.") : "1. Pilih paket durasi.\n2. Masukkan email/ID akun target.\n3. Lakukan pembayaran QRIS.\n4. Konfirmasi bukti bayar ke WA Admin.";
+            const content = tab === 'desc' ? (selectedProduct.desc || "Nikmati layanan premium dengan proses pengerjaan cepat dan bergaransi resmi dari PandaPedia.") : "1. Garansi berlaku sesuai  durasi pembelian (khusus kendala backfree).\n2. Garansi dihitung sejak tanggal pembelian.\n3. Garansi tidak berlaku jika akun terkena banned / suspend.";
             document.getElementById('tab-content').innerText = content;
             document.getElementById('tab-desc-btn').classList.toggle('active', tab === 'desc');
             document.getElementById('tab-tnc-btn').classList.toggle('active', tab === 'tnc');
