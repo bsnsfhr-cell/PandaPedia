@@ -42,7 +42,7 @@
         .category-pill.active { background-color: #0891b2; color: white; border-color: #0891b2; }
         
         .service-card-mini {
-            min-width: 140px; background: white; border-radius: 1rem;
+            min-width: 200px; background: white; border-radius: 1rem;
             padding: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); flex-shrink: 0;
         }
 
@@ -62,7 +62,7 @@
     </nav>
 
     <div id="home-page" class="page active pt-16">
-        <section class="hero-bg pt-8 pb-16 px-6 text-center text-white rounded-b-[3rem] shadow-xl">
+        <section class="hero-bg pt-8 pb-24 px-6 text-center text-white rounded-b-[3rem] shadow-xl">
             <h1 class="text-2xl font-black uppercase italic mb-1 tracking-tight">EXPERT SERVICES</h1>
             <p class="text-[9px] font-bold opacity-80 mb-6 uppercase tracking-widest">Solusi Jasa Profesional PandaPedia</p>
             <div class="flex overflow-x-auto gap-3 no-scrollbar pb-2" id="services-container"></div>
@@ -250,11 +250,11 @@
             container.innerHTML = services.map(s => `
                 <div class="service-card-mini" onclick="openCheckout('${s.id}')">
                     <div class="flex items-center gap-2 mb-2">
-                        <img src="${s.image}" class="w-8 h-8 rounded-lg object-cover">
+                        <img src="${s.image}" class="w-12 h-12 rounded-lg object-cover">
                         <span class="bg-slate-900 text-white text-[6px] font-black px-1 py-0.5 rounded uppercase">TERJUAL ${s.sold}+</span>
                     </div>
-                    <h4 class="text-[9px] font-black uppercase text-slate-800 truncate">${s.name}</h4>
-                    <p class="text-[10px] font-black text-cyan-600 mt-0.5">Mulai Rp ${s.variants[0].price.toLocaleString('id-ID')}</p>
+                    <h4 class="text-[sx] font-black uppercase text-slate-800 truncate">${s.name}</h4>
+                    <p class="text-[sx] font-black text-cyan-600 mt-0.5">Mulai Rp ${s.variants[0].price.toLocaleString('id-ID')}</p>
                 </div>
             `).join('');
         }
