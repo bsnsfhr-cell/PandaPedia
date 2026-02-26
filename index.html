@@ -325,19 +325,37 @@
         { id: 'p48', name: "ZOOM", category: "Tools", image: "50.png", sold: 280, durations: {d1:"1 Bulan", d2:"6 Bulan", d3:"1 Tahun"}, prices: { m1: 25000, m2: 125000, m3: 245000 }, desc: "menawarkan durasi rapat tak terbatas (hingga 30 jam), kapasitas peserta lebih besar (100-1000+), penyimpanan cloud recording (5-10GB+), dan AI Companion untuk notulen otomatis. Fitur ini menghilangkan batas 40 menit, memberikan laporan admin, serta integrasi kalender yang lebih baik. ", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." }
     ];
 
-    // 2. FUNGSI UNTUK MERENDER KATALOG KE HTML
+// 3. RENDER LAYANAN (SERVICES)
+    function renderServices() {
+        const container = document.getElementById('services-container'); // Pastikan ID ini ada di HTML
+        if (!container) return;
+
+        container.innerHTML = services.map(s => `
+            <div class="product-card" onclick="openCheckout('${s.id}')">
+                <div class="relative">
+                    <img src="${s.image}" class="w-full aspect-square object-cover">
+                    <span class="absolute bottom-2 left-2 bg-slate-900/70 px-1.5 py-0.5 rounded text-[7px] font-black text-white uppercase">TERJUAL ${s.sold}+</span>
+                </div>
+                <div class="p-3">
+                    <h3 class="text-[10px] font-black uppercase text-slate-800 truncate">${s.name}</h3>
+                    <p class="text-[11px] font-black text-cyan-600 mt-0.5">Rp ${s.variants[0].price.toLocaleString('id-ID')}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // 4. RENDER KATALOG PRODUK (p1-p48)
     function renderCatalog(items) {
         const container = document.getElementById('main-catalog');
-        if (!container) return; // Mencegah error jika elemen ID tidak ada
+        if (!container) return;
 
         container.innerHTML = items.map(p => {
-            // Menampilkan harga bulan pertama (m1) sebagai harga "Mulai Dari"
             const priceShow = p.prices ? p.prices.m1 : 0;
             return `
-                <div class="product-card cursor-pointer bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-all" onclick="openCheckout('${p.id}')">
+                <div class="product-card" onclick="openCheckout('${p.id}')">
                     <div class="relative">
-                        <img src="${p.image}" class="w-full aspect-square object-cover" alt="${p.name}">
-                        <span class="absolute bottom-2 left-2 bg-slate-900/70 backdrop-blur px-1.5 py-0.5 rounded text-[7px] font-black text-white uppercase">TERJUAL ${p.sold}+</span>
+                        <img src="${p.image}" class="w-full aspect-square object-cover">
+                        <span class="absolute bottom-2 left-2 bg-slate-900/70 px-1.5 py-0.5 rounded text-[7px] font-black text-white uppercase">TERJUAL ${p.sold}+</span>
                     </div>
                     <div class="p-3">
                         <h3 class="text-[10px] font-black uppercase text-slate-800 truncate">${p.name}</h3>
@@ -348,39 +366,49 @@
         }).join('');
     }
 
-    // 3. FUNGSI UNTUK MEMBUKA MODAL CHECKOUT
+    // 5. LOGIKA OPEN CHECKOUT (MENDUKUNG KEDUA STRUKTUR)
     function openCheckout(id) {
-        selectedProduct = allCatalog.find(p => p.id === id);
-        selectedVariantIdx = 0; // Reset ke pilihan pertama
-        
+        selectedProduct = masterData.find(p => p.id === id);
+        selectedVariantIdx = 0;
+
         if (!selectedProduct) return;
 
-        // Update UI Modal (Ganti ID sesuai dengan ID elemen HTML modal kamu)
+        // Tampilkan Modal
+        const modal = document.getElementById('checkout-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        // Isi Data Modal
         document.getElementById('modal-name').innerText = selectedProduct.name;
         document.getElementById('modal-desc').innerText = selectedProduct.desc;
         document.getElementById('modal-tnc').innerText = selectedProduct.tnc;
         document.getElementById('modal-image').src = selectedProduct.image;
 
         renderVariants();
-        document.getElementById('checkout-modal').classList.remove('hidden');
-        document.getElementById('checkout-modal').classList.add('flex');
     }
 
-    // 4. FUNGSI UNTUK MERENDER VARIAN HARGA & DURASI
+    // 6. RENDER VARIAN (ADAPTIF)
     function renderVariants() {
         const list = document.getElementById('variants-list');
-        if (!selectedProduct || !list) return;
+        let v = [];
 
-        const v = [
-            { title: selectedProduct.durations.d1, price: selectedProduct.prices.m1 },
-            { title: selectedProduct.durations.d2, price: selectedProduct.prices.m2 },
-            { title: selectedProduct.durations.d3, price: selectedProduct.prices.m3 }
-        ];
+        // Cek jika produk dari Jasa (pakai array variants)
+        if (selectedProduct.variants) {
+            v = selectedProduct.variants;
+        } 
+        // Cek jika produk dari Katalog (pakai d1, d2, d3)
+        else if (selectedProduct.prices && selectedProduct.durations) {
+            v = [
+                { title: selectedProduct.durations.d1, price: selectedProduct.prices.m1 },
+                { title: selectedProduct.durations.d2, price: selectedProduct.prices.m2 },
+                { title: selectedProduct.durations.d3, price: selectedProduct.prices.m3 }
+            ];
+        }
 
         selectedProduct.activeVariants = v;
 
         list.innerHTML = v.map((item, idx) => `
-            <div class="variant-option p-4 mb-2 rounded-lg border cursor-pointer transition-all ${idx === selectedVariantIdx ? 'border-cyan-500 bg-cyan-50' : 'border-slate-100 bg-white'}" onclick="selectVariant(${idx})">
+            <div class="variant-option p-4 mb-2 border rounded-lg cursor-pointer ${idx === selectedVariantIdx ? 'border-cyan-500 bg-cyan-50' : 'border-slate-100 bg-white'}" onclick="selectVariant(${idx})">
                 <div class="flex justify-between items-center">
                     <span class="text-[11px] font-bold text-slate-700">${item.title}</span>
                     <span class="text-[11px] font-black text-cyan-700">Rp ${item.price.toLocaleString('id-ID')}</span>
@@ -394,12 +422,12 @@
         renderVariants();
     }
 
-    // 5. AUTO-RUN SAAT HALAMAN SELESAI DIMUAT
+    // Inisialisasi saat load
     document.addEventListener('DOMContentLoaded', () => {
+        renderServices();
         renderCatalog(allCatalog);
     });
-
-        </script>
+</script>
 </body>
 </html>
                 
