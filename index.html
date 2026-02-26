@@ -45,6 +45,21 @@
             min-width: 200px; background: white; border-radius: 1rem;
             padding: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); flex-shrink: 0;
         }
+        .badge-terlaris {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0891b2; /* Cyan 600 */
+            color: white;
+            padding: 4px 15px;
+            border-radius: 99px;
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(8, 145, 178, 0.3);
+            z-index: 10;
+        }
 
         .step-card { background: white; padding: 1.5rem; border-radius: 1.5rem; border: 1px solid #f1f5f9; }
     </style>
@@ -74,6 +89,49 @@
                 <div class="w-11 h-11 bg-cyan-600 rounded-[1.5rem] flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-magnifying-glass text-sm"></i></div>
             </div>
         </div>
+                <div class="px-6 mb-8">
+            <div class="flex gap-3 overflow-x-auto no-scrollbar pb-3 pt-3">
+                
+                <div class="relative flex-shrink-0 w-[180px] bg-white rounded-[2rem] p-4 shadow-lg border border-slate-100">
+                    <div class="badge-terlaris text-[6px]">TERLARIS</div>
+                    <h3 class="text-[8px] font-black text-slate-400 uppercase tracking-tighter mb-1">Paket Permanen</h3>
+                    <div class="flex items-baseline gap-1 mb-3">
+                        <span class="text-lg font-black text-cyan-600 tracking-tighter">Rp 1 JT</span>
+                    </div>
+                    <ul class="space-y-2 mb-4 text-left">
+                        <li class="flex items-center gap-2 text-[8px] font-bold text-slate-600">
+                            <i class="fa-solid fa-circle-check text-cyan-500 text-[9px]"></i> Akses Selamanya
+                        </li>
+                        <li class="flex items-center gap-2 text-[8px] font-bold text-slate-600">
+                            <i class="fa-solid fa-circle-check text-cyan-500 text-[9px]"></i> Grup Mentoring
+                        </li>
+                    </ul>
+                    <button onclick="window.open('https://wa.me/628976071999?text=Halo+PandaPedia+saya+ingin+ambil+Paket+Permanen')" class="w-full py-2.5 bg-slate-900 text-white rounded-xl text-[8px] font-black uppercase tracking-widest shadow-md">
+                        Pilih Paket
+                    </button>
+                </div>
+
+                <div class="flex-shrink-0 w-[180px] bg-white/50 rounded-[2rem] p-4 border border-slate-200 opacity-60">
+                    <h3 class="text-[8px] font-black text-slate-400 uppercase tracking-tighter mb-1">Paket 5 Bulan</h3>
+                    <div class="flex items-baseline gap-1 mb-3">
+                        <span class="text-lg font-black text-slate-400 tracking-tighter">Rp 500K</span>
+                    </div>
+                    <ul class="space-y-2 mb-4 text-left">
+                        <li class="flex items-center gap-2 text-[8px] font-bold text-slate-400">
+                            <i class="fa-solid fa-circle-check text-slate-300 text-[9px]"></i> Akses 150 Hari
+                        </li>
+                        <li class="flex items-center gap-2 text-[8px] font-bold text-slate-400">
+                            <i class="fa-solid fa-circle-check text-slate-300 text-[9px]"></i> Full Support
+                        </li>
+                    </ul>
+                    <button class="w-full py-2.5 bg-slate-200 text-slate-500 rounded-xl text-[8px] font-black uppercase tracking-widest">
+                        Pilih Paket
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
 
         <div class="px-6 mb-6 flex overflow-x-auto gap-2 no-scrollbar" id="category-container">
             <button onclick="filterByCategory('Semua')" class="category-pill active px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-wider">Semua</button>
