@@ -181,65 +181,99 @@
                         <p class="text-[10px] text-slate-400">Kirim bukti bayar ke admin untuk diproses instan.</p>
                     </div>
                 </div>
-            </div>
+    <div id="home-page" class="page active pt-16">
+        <section class="hero-bg pt-8 pb-24 px-6 text-center text-white rounded-b-[3rem] shadow-xl">
+            <h1 class="text-2xl font-black uppercase italic mb-1 tracking-tight">EXPERT SERVICES</h1>
+            <p class="text-[9px] font-bold opacity-80 mb-6 uppercase tracking-widest">Solusi Jasa Profesional PandaPedia</p>
+            <div class="flex overflow-x-auto gap-3 no-scrollbar pb-2" id="services-container"></div>
         </section>
 
-        <section class="px-6 mb-20">
-            <div class="bg-slate-900 rounded-[2.5rem] p-8 text-center text-white relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full -mr-16 -mt-16"></div>
-                <h2 class="text-xl font-black uppercase italic mb-2">Ingin Harga Lebih Murah?</h2>
-                <p class="text-[10px] opacity-70 mb-6 font-medium">Dapatkan harga khusus Reseller dengan bergabung ke komunitas mitra PandaPedia sekarang!</p>
-                <button onclick="window.open('https://wa.me/628976071999?text=Halo+Admin+saya+ingin+tanya+join+reseller')" class="w-full py-4 bg-white text-slate-900 rounded-2xl font-black uppercase text-[10px] tracking-widest shadow-xl">Gabung Reseller Sekarang</button>
+        <div class="px-6 -mt-6 mb-6">
+            <div class="bg-white rounded-[2rem] shadow-xl p-1 flex items-center border border-slate-100">
+                <input type="text" id="search-input" onkeyup="filterProducts()" placeholder="Cari layanan atau produk..." class="flex-1 bg-transparent px-5 py-3.5 text-xs font-semibold outline-none">
+                <div class="w-11 h-11 bg-cyan-600 rounded-[1.5rem] flex items-center justify-center text-white shadow-lg">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="reseller-section" class="px-6 mb-8">
+            <div class="reseller-banner rounded-[2rem] p-6 flex items-center justify-between shadow-xl mb-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-black text-[11px] uppercase tracking-tight">Ingin Penghasilan Tambahan?</h3>
+                        <p class="text-white/70 text-[9px] font-medium leading-tight">Gabung Reseller sekarang & dapatkan<br>harga modal!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="package-card featured shadow-xl">
+                    <div class="absolute -top-3 right-4 bg-white text-cyan-800 text-[7px] font-black px-3 py-1 rounded-lg uppercase tracking-widest shadow-md">Terlaris</div>
+                    <p class="text-[9px] font-black italic uppercase mb-1 opacity-80">Paket Permanen</p>
+                    <h2 class="text-xl font-black mb-4">Rp 1 JT</h2>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-[9px] font-bold"><i class="fa-solid fa-check"></i> Akses Selamanya</li>
+                        <li class="flex items-center gap-2 text-[9px] font-bold"><i class="fa-solid fa-check"></i> Harga Termurah</li>
+                        <li class="flex items-center gap-2 text-[9px] font-bold"><i class="fa-solid fa-check"></i> Grup Mentoring</li>
+                    </ul>
+                    <button onclick="window.open('https://wa.me/628976071999?text=Halo+PandaPedia,+saya+ingin+daftar+Paket+Reseller+Permanen')" 
+                            class="btn-package w-full py-3 rounded-xl font-black text-[9px] uppercase tracking-widest shadow-lg active:scale-95 transition-transform">
+                        Pilih Paket
+                    </button>
+                </div>
+
+                <div class="package-card shadow-lg">
+                    <p class="text-[9px] font-black italic text-slate-500 uppercase mb-1">Paket 5 Bulan</p>
+                    <h2 class="text-xl font-black text-slate-700 mb-4">Rp 500K</h2>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><i class="fa-solid fa-check text-cyan-600"></i> Akses 150 Hari</li>
+                        <li class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><i class="fa-solid fa-check text-cyan-600"></i> Harga Modal</li>
+                        <li class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><i class="fa-solid fa-check text-cyan-600"></i> Full Support</li>
+                    </ul>
+                    <button onclick="window.open('https://wa.me/628976071999?text=Halo+PandaPedia,+saya+ingin+daftar+Paket+Reseller+5+Bulan')" 
+                            class="w-full py-3 bg-slate-900 text-white rounded-xl font-black text-[9px] uppercase tracking-widest active:scale-95 transition-transform">
+                        Pilih Paket
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-6 mb-6 flex overflow-x-auto gap-2 no-scrollbar" id="category-container">
+            <button onclick="filterByCategory('Semua')" class="category-pill active px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-wider">Semua</button>
+            <button onclick="filterByCategory('Streaming')" class="category-pill px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-wider">Streaming</button>
+            <button onclick="filterByCategory('AI & Tools')" class="category-pill px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-wider">AI & Tools</button>
+            <button onclick="filterByCategory('Editing')" class="category-pill px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-wider">Editing</button>
+        </div>
+
+        <div class="px-5 mb-12">
+            <div class="grid grid-cols-2 gap-4" id="main-catalog"></div>
+        </div>
+
+        <section class="px-6 mb-12">
+            <h2 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6 text-center italic">--- Alur Pemesanan ---</h2>
+            <div class="space-y-4">
+                <div class="step-card flex items-center gap-5">
+                    <div class="w-10 h-10 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center font-black">1</div>
+                    <div><h4 class="text-[11px] font-black uppercase">Pilih Produk</h4><p class="text-[10px] text-slate-400">Pilih layanan atau aplikasi yang dibutuhkan.</p></div>
+                </div>
+                <div class="step-card flex items-center gap-5">
+                    <div class="w-10 h-10 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center font-black">2</div>
+                    <div><h4 class="text-[11px] font-black uppercase">Isi Data & Bayar</h4><p class="text-[10px] text-slate-400">Input Email/ID dan scan QRIS tersedia.</p></div>
+                </div>
+                <div class="step-card flex items-center gap-5">
+                    <div class="w-10 h-10 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center font-black">3</div>
+                    <div><h4 class="text-[11px] font-black uppercase">Konfirmasi WA</h4><p class="text-[10px] text-slate-400">Kirim bukti bayar ke admin PandaPedia.</p></div>
+                </div>
             </div>
         </section>
 
         <footer class="py-10 text-center border-t border-slate-100">
             <p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">© 2024 PandaPedia Digital Store</p>
         </footer>
-    </div>
-
-    <div id="detail-page" class="page pt-20 pb-28 bg-white">
-        <div class="px-6 max-w-lg mx-auto">
-            <div class="flex items-center justify-between mb-6">
-                <button onclick="showPage('home-page')" class="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 text-slate-500 border border-slate-100 text-[9px] font-black uppercase tracking-wider">
-                    <i class="fa-solid fa-chevron-left"></i> Kembali
-                </button>
-            </div>
-            <div id="checkout-header" class="mb-6 flex gap-4 items-center">
-                <img id="modal-image" class="w-24 h-24 rounded-2xl object-cover shadow-lg border border-slate-100">
-                <div>
-                    <h2 id="modal-name" class="text-lg font-black uppercase text-slate-800 leading-tight"></h2>
-                    <span class="inline-block mt-1 bg-cyan-50 text-cyan-600 text-[8px] font-black px-2 py-1 rounded">PRODUK DIGITAL</span>
-                </div>
-            </div>
-            <div class="flex border-b border-slate-100 mb-6 gap-8">
-                <button id="tab-desc-btn" onclick="switchTab('desc')" class="tab-btn active">Deskripsi</button>
-                <button id="tab-tnc-btn" onclick="switchTab('tnc')" class="tab-btn">Syarat & Ketentuan</button>
-            </div>
-            <div id="tab-content" class="text-[11px] text-slate-500 font-medium leading-relaxed mb-8 whitespace-pre-line"></div>
-            <h3 class="text-[10px] font-black uppercase text-slate-800 mb-4 tracking-widest">PILIH PAKET</h3>
-            <div id="variants-list" class="space-y-3 mb-8"></div>
-            <div class="space-y-4">
-                <input type="text" id="cust-target" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 text-xs font-bold outline-none focus:border-cyan-500 focus:bg-white" placeholder="Masukkan Email / ID Akun">
-                <button onclick="processPayment()" class="w-full py-5 bg-cyan-600 text-white rounded-[1.5rem] font-black uppercase text-sm shadow-xl">Lanjut Pembayaran</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="payment-page" class="page pt-20 pb-12 bg-slate-50">
-        <div class="px-6 max-w-md mx-auto text-center">
-            <div class="bg-white rounded-[3rem] p-8 shadow-2xl">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=PandapediaPayment" id="qris-img" class="w-56 h-56 rounded-xl mx-auto mb-8 border shadow-inner">
-                <div class="bg-slate-900 p-5 rounded-2xl text-white text-left mb-8">
-                    <p id="p-name" class="font-black text-[9px] uppercase italic text-cyan-400"></p>
-                    <p id="p-total" class="text-xl font-black"></p>
-                </div>
-                <button onclick="confirmWA()" class="w-full py-4 bg-green-500 text-white rounded-2xl font-black uppercase text-[10px] flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> Konfirmasi Bayar
-                </button>
-                <button onclick="showPage('home-page')" class="mt-6 text-[9px] font-black text-slate-400 uppercase">Batalkan</button>
-            </div>
-        </div>
     </div>
 
     <script>
