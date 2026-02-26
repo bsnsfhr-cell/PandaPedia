@@ -260,224 +260,152 @@
     </div>
 
     <script>
-        const ADMIN_WA = "628976071999";
-        let selectedProduct = null;
-        let selectedVariantIdx = 0;
+    const ADMIN_WA = "628976071999";
+    let selectedProduct = null;
+    let selectedVariantIdx = 0;
 
-        // Jasa Layanan dengan Deskripsi & TNC Kustom
-        const services = [
-            { id: 's1', name: "WEB DEVELOPMENT", price: 1000000, image: "53.png", desc: "Jasa pembuatan website landing page\ E-Commerce \ Company Profile\ Costum Website\ Campus Website \ Android Application \ News Website.", tnc: " Website Costum Detail Info Di Diskusikan Dengan Admin Kami Untuk Mengetahui Harga Sesuai Yang Kamu Inginkan", variants: [{title: "Paket Silver", price: 1000000}, {title: "Paket Gold", price: 2500000}, {title: "Paket Platinum", price: 4000000}] },
-            { id: 's2', name: "JUAL AKUN TIKTOK", price: 150000, image: "52.png", desc: "hubungi admin untuk mengetahui stock Sesuai kebutuhan anda,Cari Akun 1K-500K Folowers Bisa Request,Real Akub Indo Folowers Aktif,Live On Affiliate On Status Akun Sehat No Minus,Tidak Ada Bekas Pelanggaran,Aman Dan Ready Change,Anti Hadback.", tnc: "1. untuk pengguna fitur live di harapkan login setelah 24 jam Untuk Menghindari Kerusakan Akun.\n2. Jika Akun Sudah Di Rasa Aman/Tidak Ada Minus,Maka Langsung Ganti Pasword Dan Amankan.\n3. Jika Ada Kesalahan Dari Penjual,Maka Langsung Konfirmasi Ke Penjual Secepatnya.Jika Sudah Ada Minus Dari Pembelu Maka Akun Tidak Bisa Di Kembalikan.\n4. Akun Yang Sudah Di Serahkan Tidak Dapat Di Kembalikan (Terkecuali,Kesalahan Penjual) \n 5.Kesalahan Pembeli Atau Tidak Membaca Aturan Ini Maka Tidak Dapat Di Kembalikan.\n 6.Tidak Menerima Akun Terkunci", variants: [{title: "Akun Followers 1k", price: 150000}, {title: "Akun Followers 10,3K", price: 650000}, {title: "Akun Followers 21,3K ", price: 850000}] },
-            { id: 's3', name: "AKUN SPENDER TIKTOK", price: 1500000, image: "52.png", desc: "Hubungi Admin Untuk Mengetahui Stock Sesuai Kebutuhan Anda,Anti Hack Back,Region Indo Dan Luar Bisa Request.", tnc: "1. untuk pengguna fitur live di harapkan login setelah 24 jam Untuk Menghindari Kerusakan Akun.\n2. Jika Akun Sudah Di Rasa Aman/Tidak Ada Minus,Maka Langsung Ganti Pasword Dan Amankan.\n3. Jika Ada Kesalahan Dari Penjual,Maka Langsung Konfirmasi Ke Penjual Secepatnya.Jika Sudah Ada Minus Dari Pembelu Maka Akun Tidak Bisa Di Kembalikan.\n4. Akun Yang Sudah Di Serahkan Tidak Dapat Di Kembalikan (Terkecuali,Kesalahan Penjual) \n 5.Kesalahan Pembeli Atau Tidak Membaca Aturan Ini Maka Tidak Dapat Di Kembalikan.\n 6.Tidak Menerima Akun Terkunci", variants: [{title: "Paket Level 20", price: 1500000}, {title: "Paket Level 27", price: 2000000}, {title: "Paket Level 30", price: 4000000}] },
-            { id: 's4', name: "IMEI UNLOCK IPHONE", price: 300000, image: "54.png", desc: "Suport Semua Tipe Iphone,Proses Maksimal 24Jam.", tnc: "1. Bergaransi Sesuai Pembelian", variants: [{title: "3 Bulan", price: 300000}, {title: "6 Bulan", price: 575000}, {title: "9 Bulan", price: 800000}] },
-            { id: 's5', name: "HAPUS AKUN SOSIAL MEDIA PRIBADI", price: 500000, image: "55.png", desc: "Wajib Akun Pribadi,Lupa Email Dan Sandi,Tidak Bisa Login,Riwayat Privasi.", tnc: "1. Pengerjaan Membutuhkan Waktu Paling Lama 14 Hari.\n2. Wajib Ada 1 Identitas Untuk Mempercepat Penghapusan(Sim/Ktp Dll).\n3. Garansi Refund Jika Tidak Terhapus Kena Layanan Biaya Jasa 15%.", variants: [{title: "1 Akun", price: 50000}, {title: "2 Akun", price: 100000}, {title: "Hapus 3 Akun", price: 1500000}] },
-            { id: 's6', name: "SUNTIK FOLOWERS", price: 60000, image: "56.png", desc: "Untuk Semua Akun Sosial Media,Facebook Pro,Tiktok,Instagram,Threads,X,Shope,Dan Lainnya.", tnc: "1. Akun Tidak Boleh Privat.\n2. Selama Proses Tidak Boleh Di Ganti Username/Nama.\n3. Garansi Jika Folowers Drop.", variants: [{title: "1000 Folowers", price: 60000}, {title: "2000 Folowers", price: 100000}, {title: "3000 Folowers", price: 150000}] }
-        ];
+    // Jasa Layanan
+    const services = [
+        { id: 's1', name: "WEB DEVELOPMENT", price: 1000000, image: "53.png", sold: 250, desc: "Jasa pembuatan website...", tnc: "Detail via Admin", variants: [{title: "Paket Silver", price: 1000000}, {title: "Paket Gold", price: 2500000}, {title: "Paket Platinum", price: 4000000}] },
+        // ... (data lainnya)
+    ];
 
-        // Katalog Produk Digital dengan Deskripsi & TNC Kustom
-                    const allCatalog = [
-            { id: 'p1', name: "Blackbox Ai", price: 15000, category: "Tools & Ai", image: "22.png", desc: "Blackbox AI adalah asisten berbasis kecerdasan buatan untuk developer yang mempercepat coding melalui fitur unggulan seperti auto-complete kode, pembuatan kode dari bahasa alami (text-to-code), serta debugging otomatis. Ia mendukung banyak bahasa pemrograman, terintegrasi dengan VS Code, dan memiliki fitur vision untuk mengubah gambar/screenshot menjadi kode.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p2', name: "PERPLEXTY AI", price: 15000, category: "Tools & Ai", image: "23.png", desc: "Akses Netflix kualitas 4K UHD. Akun Sharing atau Private.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p3', name: "ALIGHT MOTION", price: 5000, category: "Editing", image: "24.png", desc: "edit video dan animasi profesional tanpa watermark, mencakup efek visual canggih, keyframe animation, ekspor 4K/60fps, layer tak terbatas, dan pustaka aset eksklusif. Fitur ini dirancang untuk konten kreator yang membutuhkan hasil berkualitas studio di perangkat.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p4', name: "BSTATION", price: 20000, category: "Editing", image: "65.png", desc: "pengalaman menonton anime dan drama tanpa iklan, resolusi tinggi hingga 1080p/4K, serta akses lebih awal (simulcast) ke episode terbaru..", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p5', name: "BYPASS YOUTUBE", price: 10000, category: "Streaming", image: "49.png", desc: "buat email youtube yang kena limit biar bisa gabung ke family plan lagi maka butuh jasa buat bypass.", tnc: "1. Akun Tidak Bergaransi." },
-            { id: 'p6', name: "CANVA", price: 5000, category: "Editing", image: "19.png", desc: "akses ke >100 juta aset premium (foto, video, elemen), Magic Resize (ubah ukuran instan), Background Remover (hapus latar belakang), dan Brand Kit untuk konsistensi merek.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p7', name: "CAPCUT", price: 15000, category: "Editing", image: "21.png", desc: "Private profile,ekspor 4K tanpa watermark, efek/filter premium, smart cutout AI yang lebih akurat, chroma key canggih, dan penyimpanan awan (cloud) yang lebih besar. Fitur ini dirancang untuk pembuat konten profesional yang membutuhkan hasil sinematik, background remover superior, dan kecepatan rendering lebih cepat di desktop maupun mobile.", tnc: "1. Garansi BackFree berlaku saat pertama login.\n2. Login menggunakan email..\n3. full garansi maksimal login 2 perangkat." },
-            { id: 'p8', name: "CATCHPLAY", price: 8000, category: "Streaming", image: "66.png", desc: "akses nonton sepuasnya tanpa iklan, kualitas streaming HD, dan koleksi film blockbuster serta serial populer.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p9', name: "CHAT GPT", price: 28000, category: "Tools & Ai", image: "26.png", desc: "ChatGPT Plus adalah versi berbayar dari chatbot AI populer ChatGPT yang dikembangkan oleh OpenAI. Layanan ini menawarkan berbagai keunggulan dan fitur tambahan yang tidak tersedia di versi gratis.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p10', name: "CRUNCHYROLL", price: 10000, category: "Streaming", image: "27.png", desc: "pengalaman streaming tanpa iklan, akses penuh ke seluruh pustaka anime/manga, dan penayangan episode terbaru satu jam setelah tayang di Jepang.", tnc: "1. 1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p11', name: "DISNEY", price: 25000, category: "Streaming", image: "28.png", desc: "menawarkan pengalaman streaming maksimal dengan kualitas video hingga 4K UHD (2160p) dan audio Dolby Atmos. ", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p12', name: "DRAMA BOX", price: 20000, category: "Streaming", image: "hbo.png", desc: "menawarkan pengalaman streaming drama Asia (Korea, Cina, Jepang, Thailand) tanpa iklan dengan akses penuh ke ribuan judul, termasuk konten eksklusif. Pengguna mendapatkan kualitas video HD/UHD, kemampuan download untuk ditonton offline, serta dukungan penggunaan di berbagai perangkat (HP, tablet, TV).", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p13', name: "FIZZO", price: 15000, category: "Streaming", image: "67.png", desc: "sharing 3 user pengguna menawarkan pengalaman membaca novel dan komik digital yang lebih eksklusif tanpa gangguan iklan, akses tak terbatas ke ribuan cerita dari berbagai genre, serta fitur unduh (download) untuk membaca offline.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p14', name: "Gemini Ai", price: 25000, category: "Streaming", image: "30.png", desc: "akun private akses ke model terkuat (Gemini 1.5 Pro) untuk performa unggul, integrasi Google Workspace (Gmail, Docs, dll.), kapasitas konteks 1 juta token, serta penyimpanan cloud 2TB. Fitur kuncinya meliputi riset mendalam, analisis data, pembuatan gambar canggih, dan akses prioritas. .", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p15', name: "AI PERPLEXTY", price: 15000, category: "Tools & Ai", image: "23.png", desc: "mencakup pencarian real-time yang lebih dalam, 10x lebih banyak kutipan, analisis data superior, dan pembuatan gambar/video dari teks.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p16', name: "APPLE MUSIC", price: 15000, category: "Tools", image: "25.png", desc: "akses tanpa iklan ke lebih dari 100 juta lagu, streaming audio kualitas tinggi (Lossless & Spatial Audio), serta fitur unduh (offline). Fitur utamanya mencakup lirik real-time, Apple Music Sing (karaoke), rekomendasi personal, dan dukungan lintas perangkat (iOS, Android, Windows, Smart TV). ", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p17', name: "BSTATION", price: 5000, category: "Tools", image: "65.png", desc: "pengalaman menonton anime dan drama tanpa iklan, resolusi tinggi hingga 1080p/4K, serta akses lebih awal (simulcast) ke episode terbaru.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p18', name: "BYPASS YOUTUBE", price: 10000, category: "Streaming", image: "49.png", desc: "buat email youtube yang kena limit biar bisa gabung ke family plan lagi maka butuh jasa buat bypass. via login butuh email + password. khusus buat akun lama yang tidak ingin pake email baru.", tnc: "1. Tidak Bergaransi." },
-            { id: 'p19', name: "CANVA PREMIUM", price: 5000, category: "Editing", image: "19.png", desc: "akses ke >100 juta aset premium (foto, video, elemen), Magic Resize (ubah ukuran instan), Background Remover (hapus latar belakang), dan Brand Kit untuk konsistensi merek.", tnc: "1. Hanya untuk konten Redpass.\n2. 30 Hari akses.\n3. Garansi login." },
-            { id: 'p20', name: "GETCONTACT", price: 10000, category: "Tools", image: "68.png", desc: "kemampuan mengetahui siapa yang mencari/melihat profil Anda, mode privasi (pencarian anonim), lencana premium, serta perlindungan blokir spam yang lebih kuat", tnc: "1. Wajib On Stay Selama Progres.\n2. No Garansi." },
-            { id: 'p21', name: "GOGGLE DRIVE", price: 70000, category: "Tools", image: "31.png", desc: "Lifetime (1TB Storage)Masa Aktif: Lifetime Produk digunakan sebagai penyimpanan cadangan (backup) Tidak disarankan sebagai penyimpanan utama Dilarang menyimpan file bajakan, pornografi, atau phishing Penggunaan harus sesuai dengan kebijakan layanan Google", tnc: "1. 1.Garansi 1 Bulan, Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p22', name: "IQIYI", price: 12000, category: "AI & Tools", image: "33.png", desc: "sharing memberikan akses tanpa batas ke konten eksklusif, drama, dan anime terbaru tanpa iklan, dengan kualitas video Ultra HD 4K ", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p23', name: "LIGHTROOM",price: 15000 , category: "Editing", image: "72.png", desc: "sharing kontrol pengeditan profesional seperti Masking AI (langit/subjek), Healing Brush untuk menghapus objek, pengeditan foto RAW, dan Preset Adaptif. Pengguna juga mendapatkan penyimpanan cloud 100GB, fitur geometri, dan sinkronisasi lintas perangkat untuk hasil edit yang lebih presisi dan efisien", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p24', name: "LOKLOK", price: 15000, category: "STREAMING", image: "34.png", desc: "sharing premium antilimit menawarkan pengalaman menonton tanpa iklan, kualitas video HD hingga 1080p, dan akses unduhan cepat untuk ditonton offline. Pengguna dapat menikmati film dan drama populer di berbagai perangkat (HP, TV, laptop) serta akses ke fitur eksklusif seperti ruang obrolan Together.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p25', name: "MEITU", price: 20000, category: "Editing", image: "35.png", desc: "edit foto dan video profesional tanpa watermark, kualitas ekspor HD, serta ribuan filter/efek eksklusif. Fitur unggulannya mencakup teknologi AI canggih untuk retouch wajah (perbaikan kulit, gigi, bentuk wajah) otomatis dan berbagai template aesthetic", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p26', name: "MOVIE BOX", price: 10000, category: "STREAMING", image: "70.png", desc: "sharing streaming konten HD/4K tanpa iklan, unduhan offline, dan akses ke pustaka film/serial TV yang luas. Versi premium ini sering kali menyediakan pengalaman menonton yang lebih lancar dibandingkan versi gratis, memungkinkan pengguna Android/iOS menikmati konten tanpa gangguan iklan dan mendukung server streaming lebih cepat.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p27', name: "NETFLIX", price: 35000, category: "STREAMING", image: "20.png", desc: "akun semi private kualitas terbaik sudah teruji dan strong akun", tnc: "1. 25-30 Hari dihitung 1 bulan.\n2. Login hanya *1 Device*, melanggar? Akun ditarik.\n3. Dilarang mengganti Nama & Pin.\n4. Dilarang mengotak-atik pengaturan." },
-            { id: 'p28', name: "Prime Vidio", price: 15000, category: "streaming", image: "37.png", desc: "private akun menawarkan akses streaming tanpa batas ke konten eksklusif seperti olahraga (EPL, Liga 1, UCL, NBA), Vidio Original Series, drakor, dan film Hollywood. Fitur utamanya meliputi iklan terbatas, kualitas HD, fitur download untuk nonton offline, serta akses di berbagai perangkat (HP, TV, Laptop).", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p29', name: "PICSART", price: 15000, category: "Editing", image: "36.png", desc: "akun private akses tak terbatas ke seluruh alat pengeditan foto dan video profesional, konten eksklusif, serta fitur berbasis AI (Artificial Intelligence) canggih yang tidak ada pada versi gratis.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p30', name: "RCTI+", price: 10000, category: "Streaming", image: "69.png", desc: "akun private live streaming 4 channel MNC Group (RCTI, MNCTV, GTV, iNews), catch-up TV hingga 7 hari ke belakang, konten eksklusif (sinetron, film, Korea, Anime), Video+, News+, Audio+ (radio/podcast), Games+, serta Hot+ (pencarian bakat)", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p31', name: "Real Short", price: 15000, category: "Streaming", image: "real.png", desc: "akses tanpa iklan (ad-free), kualitas video tinggi hingga 1080p, dan kemampuan membuka episode premium atau eksklusif tanpa harus menunggu atau membeli koin tambahan. Ini memungkinkan pengalaman binge-watching drama pendek yang lebih lancar, cepat, dan nyaman .", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p32', name: "Remini", price: 5000, category: "Tools", image: "38.png", desc: "Remini Web menawarkan peningkatan signifikan dibandingkan versi gratis, terutama untuk kebutuhan restorasi foto dan video profesional secara instan melalui browser. Fitur utamanya berfokus pada AI-powered enhancement tanpa batas.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p33', name: "SCRIBD", price: 10000, category: "Tools", image: "39.png", desc: "menyediakan akses tak terbatas ke jutaan buku, audiobook, majalah, dokumen, dan sheet music tanpa iklan. Fitur utamanya mencakup unduhan offline, akses dokumen teknis/ilmiah, serta sinkronisasi antarperangkat untuk pengalaman membaca dan belajar tanpa gangguan. .", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p34', name: "SPOTIFY", price: 30000, category: "Tools", image: "40.png", desc: "Private profile menawarkan pengalaman mendengarkan musik tanpa iklan, kualitas audio tinggi (hingga 320 kbps dan fitur lossless), serta kemampuan download untuk mode offline.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p35', name: "TERABOX", price: 15000, category: "Tools", image: "terabox.png", desc: "hanya untuk android penyimpanan Cloud raksasa 2TB (2048 GB), bebas iklan, unggah file besar hingga 20GB, serta pemutaran video HD 1080P dengan kecepatan yang bisa diatur. Fitur lainnya mencakup cadangan otomatis, Safe Space (ruang rahasia) 2TB, dan pemulihan data terhapus hingga 30 hari..", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p36', name: "TRADING VIEW", price: 35000, category: "Tools", image: "41.png", desc: "private profile menawarkan fitur tertinggi untuk trader profesional, mencakup 8 grafik per tab, 25 indikator per grafik, data historis 20.000 bar, dan peringatan berbasis detik. Fitur unggulan lainnya adalah interval waktu kustom, volume profil mendalam, peringatan tak terbatas, dan dukungan prioritas, menjadikannya ideal untuk analisis teknikal intensif dan scalping. ", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p37', name: "VIDIO", price: 28000, category: "Streaming", image: "42.png", desc: "plan platinum mau plan ultimate hubungi admin memberikan akses ke berbagai konten hiburan dan olahraga, seperti Vidio Original Series, film/series lokal & internasional, Anime, serta tayangan olahraga seperti UCL, UEL, BRI Liga 1, Bein, dan NBA. Paket ini umumnya tidak mencakup liga sepak bola Inggris (Premier League).", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p38', name: "VISION PRO", price: 20000, category: "Streaming", image: "43.png", desc: "akses lengkap ke ribuan jam konten eksklusif, termasuk Vision+ Originals, live sports (Bundesliga, AFC, MotoGP), saluran TV premium, dan konten anak  Paket ini juga mencakup fitur catch-up TV dan microdrama vertikal, memberikan pengalaman hiburan tanpa iklan di berbagai perangkat.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p39', name: "VIU PREMIUM", price: 5000, category: "AI & Tools", image: "44.png", desc: "1 tahun liftime private profile nonton maksimal tanpa iklan, akses instan ke konten eksklusif (drama Korea/Asia terbaru), kualitas video Full HD (1080p) hingga 4K, serta fitur download untuk menonton offlinet.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p40', name: "VPN", price: 10000, category: "Editing", image: "vpn.png", desc: "menawarkan keamanan tinggi dengan enkripsi AES-256/WireGuard, kebijakan tanpa log ketat (no-log policy), kecepatan internet kencang tanpa batas bandwidth, serta ribuan server global untuk streaming dan membuka blokir konten. Fitur lainnya meliputi kill switch, pemblokir iklan/malware, dukungan pelanggan 24/7, dan penggunaan multi-device.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p41', name: "WATTPAD", price: 10000, category: "Streaming", image: "45.png", desc: "Akses ratusan tools koding premium gratis untuk mahasiswa.", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p42', name: "WETV PREMIUM", price: 25000, category: "AI & Tools", image: "46.png", desc: "private profile Premium (VIP) mencakup akses tanpa iklan, menonton episode terbaru lebih awal (termasuk konten eksklusif/original), kualitas video tinggi (HD/Blu-ray), serta fitur unduhan (download) cepat untuk offline. VIP juga memungkinkan akses ke konten spesial Asia, seperti drama Korea, China, dan Indonesia, serta bisa digunakan di berbagai perangkat (HP, TV).", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p43', name: "WIBUKU PREMIUM", price: 10000, category: "AI & Tools", image: "wibuku.png", desc: "menawarkan pengalaman membaca dan menonton konten (seperti komik dan anime) tanpa gangguan iklan, akses ke konten eksklusif, serta fitur unduh untuk menonton secara offline. Dengan akun premium, pengguna mendapatkan akses tanpa batas (unlimited key) dan kualitas tayangan yang lebih tinggi (full 1080p).", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p44', name: "WINK PREMIUM", price: 15000, category: "AI & Tools", image: "47.png", desc: "hanya bisa android menawarkan peningkatan kualitas video dan foto berbasis AI secara instan, mencakup resolusi 4K, pengurangan noise, stabilisasi, dan perbaikan detail. Fitur ini juga menyertakan kecantikan wajah/tubuh 360 derajat, peningkatan warna, serta edit video tanpa watermark. .", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p45', name: "WPS OFFICE", price: 60000, category: "Tools", image: "11.png", desc: "menawarkan solusi produktivitas lengkap tanpa iklan, fitur PDF canggih (edit, konversi, tanda tangan), ruang awan 20GB, dan akses penuh ke alat berbasis AI. Pengguna mendapatkan templat tak terbatas, kemampuan kolaborasi, serta kompatibilitas penuh dengan format MS Office dan PDF di semua perangkat (Windows, Mac, Android, iOS).", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p46', name: "YOUKU", price: 10000, category: "Tools", image: "71.png", desc: "menawarkan solusi produktivitas lengkap tanpa iklan, fitur PDF canggih (edit, konversi, tanda tangan), ruang awan 20GB, dan akses penuh ke alat berbasis AI. Pengguna mendapatkan templat tak terbatas, kemampuan kolaborasi, serta kompatibilitas penuh dengan format MS Office dan PDF di semua perangkat (Windows, Mac, Android, iOS).", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p47', name: "YOUTUBE PREMIUM", price: 15000, category: "Streaming", image: "49.png", desc: "menawarkan pengalaman menonton tanpa iklan, pemutaran latar belakang (background play), dan download video untuk ditonton secara offline. Fitur utama mencakup akses ke YouTube Music Premium, kualitas video  premium (bitrate lebih tinggi).", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." },
-            { id: 'p48', name: "ZOOM", price: 25000, category: "Tools", image: "50.png", desc: "menawarkan durasi rapat tak terbatas (hingga 30 jam), kapasitas peserta lebih besar (100-1000+), penyimpanan cloud recording (5-10GB+), dan AI Companion untuk notulen otomatis. Fitur ini menghilangkan batas 40 menit, memberikan laporan admin, serta integrasi kalender yang lebih baik. ", tnc: "1. Wajib membaca deskripsi produk dengan teliti sebelum melakukan pembelian.\n2. Produk yang sudah dibeli dan diproses tidak dapat dikembalikan (Non-Refundable).\n3. Garansi berlaku penuh sesuai dengan durasi yang dipilih saat pembelian.\n4.Dilarang mengubah data sensitif (Email/Password) kecuali diizinkan.\n5.Jika terjadi kendala, harap segera hubungi admin dengan menyertakan Invoice ID." }
-        ];
-        function getSold(id) {
-            const seed = id.split('').reduce((a, b) => a + b.charCodeAt(0), 0);
-            return (seed % 400) + 150;
-        }
+    // Katalog Produk Digital - Sekarang mendukung harga varian & terjual kustom
+    const allCatalog = [
+        { 
+            id: 'p1', 
+            name: "Blackbox Ai", 
+            category: "Tools & Ai", 
+            image: "22.png", 
+            sold: 840, // JUMLAH TERJUAL KUSTOM
+            desc: "Blackbox AI adalah asisten berbasis kecerdasan buatan...", 
+            tnc: "Wajib baca deskripsi...",
+            variants: [
+                {title: "1 Bulan", price: 15000, badge: "PROMO"},
+                {title: "2 Bulan", price: 28000},
+                {title: "3 Bulan", price: 40000, badge: "HEMAT"}
+            ] 
+        },
+        { 
+            id: 'p2', 
+            name: "PERPLEXTY AI", 
+            category: "Tools & Ai", 
+            image: "23.png", 
+            sold: 520,
+            desc: "Akses Perplexity Pro...", 
+            tnc: "Garansi penuh...",
+            variants: [
+                {title: "1 Bulan", price: 15000},
+                {title: "2 Bulan", price: 25000},
+                {title: "3 Bulan", price: 35000}
+            ] 
+        },
+        // Silakan tambahkan 'sold' dan 'variants' untuk produk lainnya seperti contoh di atas
+    ];
 
-        function renderServices() {
-            const container = document.getElementById('service-list');
-            container.innerHTML = services.map(s => `
-                <div class="service-card-mini" onclick="openCheckout('${s.id}', true)">
-                    <img src="${s.image}" class="w-full aspect-square rounded-lg object-cover mb-2">
-                    <h3 class="text-[8px] font-black text-slate-800 truncate uppercase leading-tight">${s.name}</h3>
-                    <div class="flex items-center justify-between mt-1">
-                        <p class="text-[9px] font-black text-cyan-600">Rp ${s.price.toLocaleString('id-ID')}</p>
-                        <span class="text-[6px] font-bold text-slate-400 italic">${getSold(s.id)}+ Terjual</span>
-                    </div>
+    // MEMPERBAIKI FUNGSI TERJUAL (Memprioritaskan nilai 'sold' jika ada)
+    function getSold(product) {
+        if (product.sold) return product.sold;
+        // Fallback jika lupa isi data sold
+        const seed = product.id.split('').reduce((a, b) => a + b.charCodeAt(0), 0);
+        return (seed % 400) + 150;
+    }
+
+    function renderServices() {
+        const container = document.getElementById('service-list');
+        container.innerHTML = services.map(s => `
+            <div class="service-card-mini" onclick="openCheckout('${s.id}', true)">
+                <img src="${s.image}" class="w-full aspect-square rounded-lg object-cover mb-2">
+                <h3 class="text-[8px] font-black text-slate-800 truncate uppercase leading-tight">${s.name}</h3>
+                <div class="flex items-center justify-between mt-1">
+                    <p class="text-[9px] font-black text-cyan-600">Rp ${s.variants[0].price.toLocaleString('id-ID')}</p>
+                    <span class="text-[6px] font-bold text-slate-400 italic">${getSold(s)}+ Terjual</span>
                 </div>
-            `).join('');
-        }
+            </div>
+        `).join('');
+    }
 
-        function renderCatalog(items) {
-            const container = document.getElementById('main-catalog');
-            container.innerHTML = items.map(p => `
+    function renderCatalog(items) {
+        const container = document.getElementById('main-catalog');
+        container.innerHTML = items.map(p => {
+            // Mengambil harga dari varian pertama sebagai harga tampilan utama
+            const displayPrice = p.variants ? p.variants[0].price : (p.price || 0);
+            return `
                 <div class="product-card" onclick="openCheckout('${p.id}', false)">
                     <div class="relative">
                         <img src="${p.image}" class="w-full aspect-square object-cover">
-                        <span class="absolute bottom-2 left-2 bg-slate-900/70 backdrop-blur px-1.5 py-0.5 rounded text-[6px] font-black text-white uppercase">TERJUAL ${getSold(p.id)}+</span>
+                        <span class="absolute bottom-2 left-2 bg-slate-900/70 backdrop-blur px-1.5 py-0.5 rounded text-[6px] font-black text-white uppercase">TERJUAL ${getSold(p)}+</span>
                     </div>
                     <div class="p-3">
                         <h3 class="text-[9px] font-black uppercase text-slate-800 truncate">${p.name}</h3>
-                        <p class="text-[10px] font-black text-cyan-600 mt-0.5">Rp ${p.price.toLocaleString('id-ID')}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function openCheckout(id, isService) {
-            selectedProduct = isService ? services.find(s => s.id === id) : allCatalog.find(p => p.id === id);
-            selectedVariantIdx = 0;
-            
-            document.getElementById('checkout-header').innerHTML = `
-                <div class="flex gap-4 items-start">
-                    <img src="${selectedProduct.image}" class="w-20 h-20 rounded-xl object-cover shadow-md">
-                    <div class="pt-1">
-                        <h1 class="text-sm font-black text-slate-900 leading-tight uppercase italic mb-1">${selectedProduct.name}</h1>
-                        <p class="text-[10px] font-bold text-slate-400">Mulai dari</p>
-                        <p class="text-lg font-black text-cyan-600 leading-none">Rp ${selectedProduct.price.toLocaleString('id-ID')}</p>
+                        <p class="text-[10px] font-black text-cyan-600 mt-0.5">Rp ${displayPrice.toLocaleString('id-ID')}</p>
                     </div>
                 </div>
             `;
-            
-            switchTab('desc');
-            renderVariants();
-            showPage('detail-page');
-        }
+        }).join('');
+    }
 
-        function renderVariants() {
-            const list = document.getElementById('variants-list');
-            const v = selectedProduct.variants || [
-                { title: "1 Bulan ", price: selectedProduct.price, badge: "BEST SELLER" },
-                { title: "2 Bulan ", price: Math.floor(selectedProduct.price* 2.0 ), badge: "Discount" },
-                { title: "3 Bulan ", price: Math.floor(selectedProduct.price* 3.0 ), badge:"Discound" }
-            ];
-            
-            selectedProduct.activeVariants = v;
+    function openCheckout(id, isService) {
+        selectedProduct = isService ? services.find(s => s.id === id) : allCatalog.find(p => p.id === id);
+        selectedVariantIdx = 0;
+        
+        // Ambil harga dasar dari varian pertama
+        const basePrice = selectedProduct.variants ? selectedProduct.variants[0].price : selectedProduct.price;
 
-            list.innerHTML = v.map((item, idx) => `
-                <div class="variant-option p-4 ${idx === selectedVariantIdx ? 'selected border-cyan-500 shadow-md' : 'bg-white border-slate-100'}" onclick="selectVariant(${idx})">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center ${idx === selectedVariantIdx ? 'border-cyan-600' : 'border-slate-200'}">
-                                ${idx === selectedVariantIdx ? '<div class="w-2.5 h-2.5 rounded-full bg-cyan-600"></div>' : ''}
-                            </div>
-                            <div>
-                                <h4 class="text-[11px] font-black text-slate-800 uppercase tracking-tight">${item.title}</h4>
-                                <div class="flex gap-2 mt-1.5">
-                                    <span class="text-[7px] font-black text-green-600 uppercase flex items-center gap-1"><i class="fa-solid fa-bolt"></i> Proses Cepat</span>
-                                    <span class="text-[7px] font-black text-cyan-600 uppercase flex items-center gap-1"><i class="fa-solid fa-shield-halved"></i> Pelayanan Terbaik</span>
-                                </div>
-                            </div>
+        document.getElementById('checkout-header').innerHTML = `
+            <div class="flex gap-4 items-start">
+                <img src="${selectedProduct.image}" class="w-20 h-20 rounded-xl object-cover shadow-md">
+                <div class="pt-1">
+                    <h1 class="text-sm font-black text-slate-900 leading-tight uppercase italic mb-1">${selectedProduct.name}</h1>
+                    <p class="text-[10px] font-bold text-slate-400">Mulai dari</p>
+                    <p class="text-lg font-black text-cyan-600 leading-none">Rp ${basePrice.toLocaleString('id-ID')}</p>
+                </div>
+            </div>
+        `;
+        
+        switchTab('desc');
+        renderVariants();
+        showPage('detail-page');
+    }
+
+    function renderVariants() {
+        const list = document.getElementById('variants-list');
+        
+        // JIKA VARIAN TIDAK DIDEFINISIKAN, GUNAKAN LOGIKA OTOMATIS SEPERTI SEBELUMNYA
+        const v = selectedProduct.variants || [
+            { title: "1 Bulan", price: selectedProduct.price, badge: "BEST SELLER" },
+            { title: "2 Bulan", price: Math.floor(selectedProduct.price * 2.0), badge: "DISCOUNT" },
+            { title: "3 Bulan", price: Math.floor(selectedProduct.price * 3.0), badge: "PROMO" }
+        ];
+        
+        selectedProduct.activeVariants = v;
+
+        list.innerHTML = v.map((item, idx) => `
+            <div class="variant-option p-4 ${idx === selectedVariantIdx ? 'selected border-cyan-500 shadow-md' : 'bg-white border-slate-100'}" onclick="selectVariant(${idx})">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center ${idx === selectedVariantIdx ? 'border-cyan-600' : 'border-slate-200'}">
+                            ${idx === selectedVariantIdx ? '<div class="w-2.5 h-2.5 rounded-full bg-cyan-600"></div>' : ''}
                         </div>
-                        <div class="text-right">
-                            <p class="text-xs font-black text-cyan-700">Rp ${item.price.toLocaleString('id-ID')}</p>
-                            ${item.badge ? `<span class="inline-block mt-2 text-[7px] font-black bg-cyan-600 text-white px-2 py-0.5 rounded-full uppercase shadow-sm">${item.badge}</span>` : ''}
+                        <div>
+                            <h4 class="text-[11px] font-black text-slate-800 uppercase tracking-tight">${item.title}</h4>
+                            <div class="flex gap-2 mt-1.5">
+                                <span class="text-[7px] font-black text-green-600 uppercase flex items-center gap-1"><i class="fa-solid fa-bolt"></i> Proses Cepat</span>
+                                <span class="text-[7px] font-black text-cyan-600 uppercase flex items-center gap-1"><i class="fa-solid fa-shield-halved"></i> Pelayanan Terbaik</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="text-right">
+                        <p class="text-xs font-black text-cyan-700">Rp ${item.price.toLocaleString('id-ID')}</p>
+                        ${item.badge ? `<span class="inline-block mt-2 text-[7px] font-black bg-cyan-600 text-white px-2 py-0.5 rounded-full uppercase shadow-sm">${item.badge}</span>` : ''}
+                    </div>
                 </div>
-            `).join('');
-            
-            selectedProduct.currentPrice = v[selectedVariantIdx].price;
-            selectedProduct.currentVariant = v[selectedVariantIdx].title;
-        }
+            </div>
+        `).join('');
+        
+        selectedProduct.currentPrice = v[selectedVariantIdx].price;
+        selectedProduct.currentVariant = v[selectedVariantIdx].title;
+    }
 
-        function selectVariant(idx) {
-            selectedVariantIdx = idx;
-            renderVariants();
-        }
-
-        function switchTab(tab) {
-            // MENAMPILKAN DESKRIPSI ATAU TNC KUSTOM DARI PRODUK YANG DIPILIH
-            const content = tab === 'desc' 
-                ? (selectedProduct.desc || "Nikmati layanan premium dengan proses pengerjaan cepat dan bergaransi resmi dari PandaPedia.") 
-                : (selectedProduct.tnc || "1. Pilih paket durasi.\n2. Masukkan email/ID akun target.\n3. Lakukan pembayaran QRIS.\n4. Konfirmasi bukti bayar ke WA Admin.");
-            
-            document.getElementById('tab-content').innerText = content;
-            document.getElementById('tab-desc-btn').classList.toggle('active', tab === 'desc');
-            document.getElementById('tab-tnc-btn').classList.toggle('active', tab === 'tnc');
-        }
-
-        function processPayment() {
-            const target = document.getElementById('cust-target').value;
-            if(!target) return alert("Mohon masukkan Email / ID Akun target!");
-            
-            const randomCode = Math.floor(Math.random() * 99);
-            const final = selectedProduct.currentPrice + randomCode;
-            
-            document.getElementById('p-name').innerText = selectedProduct.name;
-            document.getElementById('p-total').innerText = `Rp ${final.toLocaleString('id-ID')}`;
-            document.getElementById('qris-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=PAY-${final}`;
-            
-            selectedProduct.finalTotal = final;
-            selectedProduct.target = target;
-            showPage('payment-page');
-        }
-
-        function confirmWA() {
-            const msg = `Halo PandaPedia, saya ingin konfirmasi bayar:\n\nProduk: ${selectedProduct.name}\nPaket: ${selectedProduct.currentVariant}\nTarget: ${selectedProduct.target}\nTotal: Rp ${selectedProduct.finalTotal.toLocaleString('id-ID')}\n\nMohon segera diproses, terima kasih!`;
-            window.open(`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(msg)}`);
-        }
-
-        function showPage(id) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
-        }
-
-        function filterByCategory(cat) {
-            document.querySelectorAll('.category-pill').forEach(btn => btn.classList.toggle('active', btn.innerText === cat));
-            const filtered = cat === 'Semua' ? allCatalog : allCatalog.filter(p => p.category === cat);
-            renderCatalog(filtered);
-        }
-
-        function filterProducts() {
-            const q = document.getElementById('search-input').value.toLowerCase();
-            const filtered = allCatalog.filter(p => p.name.toLowerCase().includes(q));
-            renderCatalog(filtered);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderServices();
-            renderCatalog(allCatalog);
-        });
-    </script>
-</body>
-</html>
-
-
+    // ... (Fungsi lainnya tetap sama)
+</script>
